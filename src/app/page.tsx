@@ -9,17 +9,17 @@ import { AreasSection } from '@/components/sections/AreasSection'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { Footer } from '@/components/sections/Footer'
-import { content, type Locale } from '@/lib/content'
+import { content, type Locale, type Content } from '@/lib/content' // 👈 add Content
 
 export default function HomePage() {
   const [locale, setLocale] = useState<Locale>('pt')
-  const c = content[locale]
+  const c: Content = content[locale] // 👈 tipa aqui
 
   return (
     <>
       <LoadingScreen />
 
-      <Navigation c={c.nav} locale={locale} onLocale={setLocale} />
+      <Navigation c={c.nav as any} locale={locale} onLocale={setLocale} />
 
       <main className="pb-16 md:pb-0">
         <HeroSection c={c.hero} />
